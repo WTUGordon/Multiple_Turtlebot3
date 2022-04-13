@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node name="robot0_broadcaster" pkg="multi_turtlebot3_navigation" type="robot_tf_broadcaster0.py" respawn="false" >
+    <param name="robot" type="string" value="robot1" />
+  </node>
+
+  <node name="robot1_broadcaster" pkg="multi_turtlebot3_navigation" type="robot_tf_broadcaster1.py" respawn="false" >
+    <param name="robot" type="string" value="robot2" />
+  </node>
+
+  <node name="robot2_broadcaster" pkg="multi_turtlebot3_navigation" type="robot_tf_broadcaster2.py" respawn="false" >
+    <param name="robot" type="string" value="robot3" />
+  </node>
+
+</launch>
