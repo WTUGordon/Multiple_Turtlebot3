@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<launch>
+
+<!-- 启动三个发布tf变换的节点     -->
+<node name="tb0_broadcaster" pkg="multiple_turtlebot3_cpp" type="turtlebot_tf_broadcaster" respawn="false">
+<param name="tb_param" type="string" value="/tb3_0"/>
+</node>
+
+<node name = "tb1_broadcaster" pkg = "multiple_turtlebot3_cpp" type = "turtlebot_tf_broadcaster" respawn = "false">
+<param name = "tb_param" type = "string" value = "/tb3_1"/>
+</node>
+
+<node name = "tb2_broadcaster" pkg = "multiple_turtlebot3_cpp" type = "turtlebot_tf_broadcaster" respawn = "false">
+<param name = "tb_param" type = "string" value = "/tb3_2"/>
+</node>
+
+<!--             
+  <node name="robot0_broadcaster" pkg="multiple_turtlebot3_cpp" type="robot_tf_broadcaster0.py" respawn="false" >
+    <param name="robot" type="string" value="tb3_0" />
+  </node>
+
+  <node name="robot1_broadcaster" pkg="multiple_turtlebot3_cpp" type="robot_tf_broadcaster1.py" respawn="false" >
+    <param name="robot" type="string" value="tb3_1" />
+  </node>
+
+  <node name="robot2_broadcaster" pkg="multiple_turtlebot3_cpp" type="robot_tf_broadcaster2.py" respawn="false" >
+    <param name="robot" type="string" value="tb3_2" />
+  </node>
+-->
+<!-- 加载两个跟随者的参数 -->
+<rosparam file="$(find multiple_turtlebot3_cpp)/param/tb1_params.yaml" command="load" ns="tb1_listener" />
+<rosparam file="$(find multiple_turtlebot3_cpp)/param/tb2_params.yaml" command="load" ns="tb2_listener" />
+
+
+</launch>

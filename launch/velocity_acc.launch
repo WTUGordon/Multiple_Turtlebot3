@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-
-  <node name="robot_listener_velocity" pkg="multi_turtlebot3_navigation" 
-  type="robot_listener_velocity.py" respawn="false" output="screen"></node>
-  
-</launch>

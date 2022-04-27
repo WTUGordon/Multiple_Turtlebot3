@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  
+<node name="tb1_listener" pkg="multiple_turtlebot3_cpp" type="turtlebot_tf_listener" respawn="false" output="screen">
+</node>
+
+<node name="tb2_listener" pkg="multiple_turtlebot3_cpp" type="turtlebot_tf_listener" respawn="false" output="screen">
+</node>
+
+
+</launch>

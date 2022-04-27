@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-
-  <node name="robot_listener" pkg="multi_turtlebot3_navigation" 
-  type="robot_tf_listener.py" respawn="false" output="screen"></node>
-  
-</launch>

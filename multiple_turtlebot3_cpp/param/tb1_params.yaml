@@ -1,0 +1,13 @@
+P_lin : 1.5
+I_lin : 0.04
+D_lin : 0.0
+P_ang : 2
+I_ang : 0.0
+D_ang : 0.0
+offset_x : 0.2
+offset_y : 0
+angerr_max : 3
+linerr_max : 3
+linear_x_max : 0.25
+angular_z_max : 0.25
+tb_param : "tb3_1"
