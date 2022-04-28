@@ -25,7 +25,7 @@ int main (int argc, char ** argv)
   ros::init(argc, argv, "broadcaster_tf");
   ros::NodeHandle node("~");
   node.getParam("tb_param", tb_name);
-  ROS_INFO("turtlebot_name is %s", tb_name.c_str());
+  ROS_INFO("turtlebot_name is %s \n", tb_name.c_str());
   ros::Subscriber sub = node.subscribe(tb_name+"/odom", 100, &Callback);
   ros::spin();
   return 0;

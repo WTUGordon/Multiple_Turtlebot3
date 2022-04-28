@@ -77,7 +77,7 @@ int main (int argc, char ** argv)
     ros::Publisher pub = node.advertise<std_msgs::Float64MultiArray>("text_vel", 100);
     ros::Subscriber sub_cmdvel = node.subscribe("/tb3_0/cmd_vel", 1000, Callback);
     double offset_x, offset_y, linear_max, angular_max;
-    
+    bool delay_flag;
     std::string tb_name;
     Turtle_Param LinPar;
     Turtle_Param AngPar;
@@ -97,6 +97,7 @@ int main (int argc, char ** argv)
     node.getParam("offset_y", offset_y);
     node.getParam("linerr_max", LinErr.sum_max);
     node.getParam("angerr_max", AngErr.sum_max);
+    
     LinErr.sum_min = -LinErr.sum_max;
     AngErr.sum_min = -AngErr.sum_min;
     Turtlebot_Trans Turtle(offset_x, offset_y);
@@ -116,7 +117,7 @@ int main (int argc, char ** argv)
             listener.lookupTransform(tb_name+"/pose", "/tb3_0/pose", ros::Time(0), transform);
         }
         catch (tf::TransformException & ex){
-            ROS_ERROR("%s", ex.what());
+            ROS_ERROR("%s \n", ex.what());
             ros::Duration(1).sleep();
             continue;
         }
@@ -128,8 +129,14 @@ int main (int argc, char ** argv)
         array.data.push_back(Control_PID(&LinPar, &LinErr));
         array.data.push_back(Control_PID(&AngPar, &AngErr));
         geometry_msgs::Twist msg_twist;
-        msg_twist.angular.z = Constrain(array.data[1], angular_max, -angular_max);
-        msg_twist.linear.x = Constrain(array.data[0], linear_max, -linear_max);
+        node.getParam("interruption_flag", delay_flag);
+        if(!delay_flag){
+            msg_twist.angular.z = Constrain(array.data[1], angular_max, -angular_max);
+            msg_twist.linear.x = Constrain(array.data[0], linear_max, -linear_max);
+        } else{
+            msg_twist.angular.z = 0;
+            msg_twist.linear.x = 0;
+        }
         pub_vel.publish(msg_twist);
         pub.publish(array);
         ROS_INFO("x is %lf \n", transform.getOrigin().x());

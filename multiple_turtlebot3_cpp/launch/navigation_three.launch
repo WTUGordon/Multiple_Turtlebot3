@@ -26,7 +26,7 @@
   <arg name="map_file" default="$(find multiple_turtlebot3_cpp)/maps/room3.yaml"/>
 
   <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
-  <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find multiple_turtlebot3_cpp)/urdf/turtlebot3_$(arg model).urdf.xacro'" />
+  <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro'" />
 
   <!-- Loads robot_description to parameter server from URDF file-->
   <param name="robot_description" command="$(arg urdf_file)" />

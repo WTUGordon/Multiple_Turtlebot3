@@ -10,4 +10,5 @@ angerr_max : 3
 linerr_max : 3
 linear_x_max : 0.3
 angular_z_max : 0.3
+interruption_flag : false
 tb_param : "tb3_2"

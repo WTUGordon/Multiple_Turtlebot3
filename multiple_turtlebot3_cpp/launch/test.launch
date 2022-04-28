@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+
+<!-- 机器人中断的标志位，初始为false。为true则在中断-->
+<param name="Interruption_Flag" type="bool" value="false"/>  
+  
+</launch>

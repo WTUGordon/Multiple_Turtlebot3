@@ -1,0 +1,5 @@
+float64 time
+---
+string message
+bool success
+float64 time
