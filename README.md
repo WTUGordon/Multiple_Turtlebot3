@@ -1,4 +1,5 @@
 # multi_turtlebot3_navigation
+Turtlebot3的cpp版本，py版本请移至：https://github.com/WTUGordon/Multiple_Turtle_Python.git
 四个终端运行：  
 roslaunch multiple_turtlebot3_cpp multi_turtlebot3_gazebo.launch   
 roslaunch multiple_turtlebot3_cpp navigation_three.launch  
